@@ -1,0 +1,74 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  ubc-sample-flask-app
+
+  Sample SAM Template for ubc-sample-flask-app
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 256
+    Tracing: Active
+    LoggingConfig:
+      LogFormat: JSON
+  Api:
+    TracingEnabled: true
+    Cors:
+      AllowMethods: "'GET,POST,OPTIONS,PUT,DELETE'"
+      AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+      AllowOrigin: "'*'"
+Resources:
+  FlaskFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: ./
+      Handler: lambda-handler.handler
+      Runtime: python3.12
+      Architectures:
+      - x86_64
+      Policies:
+        # Basic permissions to write to CloudWatch Logs
+        - AWSLambdaBasicExecutionRole
+        # Example: Uncomment if your app needs S3 access
+        # - S3ReadPolicy:
+        #     BucketName: my-storage-bucket
+      Events:
+        RootApiEvent:
+          Type: Api
+          Properties:
+            Path: /         # Explicitly define the root path
+            Method: any
+        ProxyApiEvent:
+          Type: Api
+          Properties:
+            Path: /{proxy+} # Catch-all path forwards everything to Flask
+            Method: any
+
+  ApplicationResourceGroup:
+    Type: AWS::ResourceGroups::Group
+    Properties:
+      Name:
+        Fn::Sub: ApplicationInsights-SAM-${AWS::StackName}
+      ResourceQuery:
+        Type: CLOUDFORMATION_STACK_1_0
+  ApplicationInsightsMonitoring:
+    Type: AWS::ApplicationInsights::Application
+    Properties:
+      ResourceGroupName:
+        Ref: ApplicationResourceGroup
+      AutoConfigurationEnabled: true
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  FlaskApiEndpoint:
+    Description: "API Gateway endpoint URL for Prod stage"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+  FlaskFunctionArn:
+    Description: "Flask Lambda Function ARN"
+    Value: !GetAtt FlaskFunction.Arn
+  FlaskFunctionIamRole:
+    Description: "IAM Role ARN automatically created for the Flask Lambda Function"
+    Value: !GetAtt FlaskFunctionRole.Arn
