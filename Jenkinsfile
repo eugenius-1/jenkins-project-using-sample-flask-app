@@ -5,7 +5,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = 'eugenius1025/ubc-flask'
-        IMAGE_TAG = "${IMAGE_NAME}:${env.BUILD_NUMBER}"
+        IMAGE_TAG = "${IMAGE_NAME}:${env.GIT_COMMIT}"
     }
 
     stages {
