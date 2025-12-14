@@ -13,8 +13,9 @@ pipeline {
         stage('Setup') {
             steps {
                 sh '''
-                    python3 -m venv venv
-                    . venv/bin/activate
+                    if [ ! -d "venv" ]; then
+                        python3 -m venv venv
+                    fi
                 '''
             }
         }
@@ -22,14 +23,18 @@ pipeline {
         // Install Python dependencies
         stage('Install Dependencies') {
             steps {
-                sh 'pip install -r requirements.txt'
+                sh  '''
+                    ./venv/bin/pip install --upgrade pip
+
+                    ./venv/bin/pip install -r requirements.txt
+                '''
             }
         }
 
         // Run unit tests
         stage('Unit Tests') {
             steps {
-                sh 'python3 -m unittest discover tests'
+                sh './venv/bin/python3 -m unittest discover tests'
             }
         }
 
@@ -37,7 +42,6 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh """
-                    deactivate
                     printenv
                     docker build -t ${IMAGE_TAG} .
                 """
