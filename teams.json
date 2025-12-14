@@ -1,0 +1,52 @@
+{
+  "qualified_teams": [
+    { "name": "Canada", "confederation": "CONCACAF", "status": "Host" },
+    { "name": "Mexico", "confederation": "CONCACAF", "status": "Host" },
+    { "name": "United States", "confederation": "CONCACAF", "status": "Host" },
+    
+    { "name": "Japan", "confederation": "AFC", "status": "Direct" },
+    { "name": "Iran", "confederation": "AFC", "status": "Direct" },
+    { "name": "Uzbekistan", "confederation": "AFC", "status": "Direct", "notes": "Debut Appearance" },
+    { "name": "South Korea", "confederation": "AFC", "status": "Direct" },
+    { "name": "Jordan", "confederation": "AFC", "status": "Direct", "notes": "Debut Appearance" },
+    { "name": "Australia", "confederation": "AFC", "status": "Direct" },
+    { "name": "Saudi Arabia", "confederation": "AFC", "status": "Direct" },
+    { "name": "Qatar", "confederation": "AFC", "status": "Direct" },
+    
+    { "name": "Argentina", "confederation": "CONMEBOL", "status": "Direct" },
+    { "name": "Ecuador", "confederation": "CONMEBOL", "status": "Direct" },
+    { "name": "Colombia", "confederation": "CONMEBOL", "status": "Direct" },
+    { "name": "Uruguay", "confederation": "CONMEBOL", "status": "Direct" },
+    { "name": "Brazil", "confederation": "CONMEBOL", "status": "Direct" },
+    { "name": "Paraguay", "confederation": "CONMEBOL", "status": "Direct" },
+    
+    { "name": "Morocco", "confederation": "CAF", "status": "Direct" },
+    { "name": "Tunisia", "confederation": "CAF", "status": "Direct" },
+    { "name": "Egypt", "confederation": "CAF", "status": "Direct" },
+    { "name": "Algeria", "confederation": "CAF", "status": "Direct" },
+    { "name": "Ghana", "confederation": "CAF", "status": "Direct" },
+    { "name": "Cape Verde", "confederation": "CAF", "status": "Direct", "notes": "Debut Appearance" },
+    { "name": "South Africa", "confederation": "CAF", "status": "Direct" },
+    { "name": "Ivory Coast", "confederation": "CAF", "status": "Direct" },
+    { "name": "Senegal", "confederation": "CAF", "status": "Direct" },
+    
+    { "name": "New Zealand", "confederation": "OFC", "status": "Direct" },
+    
+    { "name": "England", "confederation": "UEFA", "status": "Direct" },
+    { "name": "France", "confederation": "UEFA", "status": "Direct" },
+    { "name": "Germany", "confederation": "UEFA", "status": "Direct" },
+    { "name": "Portugal", "confederation": "UEFA", "status": "Direct" },
+    { "name": "Netherlands", "confederation": "UEFA", "status": "Direct" },
+    { "name": "Belgium", "confederation": "UEFA", "status": "Direct" },
+    { "name": "Croatia", "confederation": "UEFA", "status": "Direct" },
+    { "name": "Spain", "confederation": "UEFA", "status": "Direct" },
+    { "name": "Norway", "confederation": "UEFA", "status": "Direct" },
+    { "name": "Scotland", "confederation": "UEFA", "status": "Direct" },
+    { "name": "Switzerland", "confederation": "UEFA", "status": "Direct" },
+    { "name": "Austria", "confederation": "UEFA", "status": "Direct" },
+    
+    { "name": "Panama", "confederation": "CONCACAF", "status": "Direct" },
+    { "name": "Haiti", "confederation": "CONCACAF", "status": "Direct" },
+    { "name": "Curaçao", "confederation": "CONCACAF", "status": "Direct", "notes": "Debut Appearance" }
+  ]
+}
